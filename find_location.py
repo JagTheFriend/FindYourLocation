@@ -1,18 +1,20 @@
-# importing necessary libraries 
-import reverse_geocoder as rg 
-import geocoder
 
-ipadderess = geocoder.ip('me') # get the ip address
+import reverse_geocoder as rg # to find out the location from which IP recieved
+import geocoder # to ip adress
 
-#print(f"Latitude: {ipadderess.lat}\nLogitude: {ipadderess.lng}"
+
+my_ip = geocoder.ip('me') # get the ip address of my device
+# print(f"Latitude: {ipadderess.lat}\nLogitude: {ipadderess.lng}"
 
 def reverseGeocode(coordinates): 
     result = rg.search(coordinates) # get the location
     
-    for i in result:
-        print(i,end="\n")
-  
-# The codinates of the IP adress and where it pints to
-coordinates =(ipadderess.lat, ipadderess.lng) 
+    # returns the name of the place...
+    return result 
 
-reverseGeocode(coordinates)
+
+if __name__ == '__main__': 
+      
+    # Giving the cordinates
+    coordinates =(my_ip.lat, my_ip.lng) 
+    print(reverseGeocode(coordinates))
